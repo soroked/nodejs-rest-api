@@ -5,12 +5,8 @@ const { randomBytes } = require('node:crypto');
 const contactsPath = path.join(__dirname, 'contacts.json');
 
 async function readContacts() {
-  try {
-    const contacts = await fs.readFile(contactsPath, { encoding: 'utf8' });
-    return JSON.parse(contacts);
-  } catch (err) {
-    console.log(err.message);
-  }
+  const contacts = await fs.readFile(contactsPath, { encoding: 'utf8' });
+  return JSON.parse(contacts);
 }
 
 function writeContacts(contacts) {
