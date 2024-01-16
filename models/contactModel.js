@@ -43,7 +43,9 @@ const contactUpdateSchema = Joi.object({
 });
 
 const updateFavoriteSchema = Joi.object({
-  favorite: Joi.boolean().required(),
+  favorite: Joi.boolean().required().message({
+    "any.required": "missing field favorite",
+  }),
 })
 
 const schemas = {

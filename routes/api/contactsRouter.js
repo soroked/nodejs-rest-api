@@ -1,5 +1,5 @@
 const express = require('express')
-const { validateBody, isValidId, missingFields, missingFieldFavorite } = require('../../middlewares');
+const { validateBody, isValidId, missingFields } = require('../../middlewares');
 
 const router = express.Router()
 const ctrl = require('../../controllers/contactsController');
@@ -15,6 +15,6 @@ router.delete('/:contactId', isValidId,  ctrl.deleteContactById)
 
 router.put('/:contactId', missingFields, isValidId, validateBody(contactUpdateSchema), ctrl.updateContactById)
 
-router.patch('/:contactId/favorite', missingFieldFavorite, isValidId, validateBody(updateFavoriteSchema), ctrl.updateFavorite)
+router.patch('/:contactId/favorite', isValidId, validateBody(updateFavoriteSchema), ctrl.updateFavorite)
 
 module.exports = router
