@@ -9,12 +9,12 @@ router.get('/', ctrl.getAll);
 
 router.get('/:contactId', isValidId, ctrl.getById);
 
-router.post('/', validateBody(contactAddSchema), ctrl.addContact)
+router.post('/', missingFields, validateBody(contactAddSchema), ctrl.addContact)
 
 router.delete('/:contactId', isValidId,  ctrl.deleteContactById)
 
 router.put('/:contactId', missingFields, isValidId, validateBody(contactUpdateSchema), ctrl.updateContactById)
 
-router.patch('/:contactId/favorite', isValidId, validateBody(updateFavoriteSchema), ctrl.updateFavorite)
+router.patch('/:contactId/favorite', missingFields, isValidId, validateBody(updateFavoriteSchema), ctrl.updateFavorite)
 
 module.exports = router
